@@ -12,7 +12,6 @@ public class Drivers {
 	@GeneratedValue
 	private Long id;
 	private String driverName;
-//LocalTime
 	private ArrayList<Double> miles = new ArrayList<Double>();
 	private ArrayList<Double> mph = new ArrayList<Double>();
 	private int averageMph;
