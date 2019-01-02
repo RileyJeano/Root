@@ -2,6 +2,7 @@ package riley.patrick.Root;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -11,6 +12,7 @@ import java.io.IOException;
 public class RootApplication {
 
 	public static void main(String[] args) {
+		SpringApplication.run(RootApplication.class, args);
 		DriversTracking driverTrack = new DriversTracking();
 		try {
 			File file = new File("DriversReport.txt");
@@ -31,7 +33,7 @@ public class RootApplication {
 			e.printStackTrace();
 		}
 
-		System.out.println();
+		System.out.println("Server is Running! Better catch it!");
 	}
 
 }

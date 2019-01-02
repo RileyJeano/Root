@@ -1,9 +1,6 @@
 package riley.patrick.Root;
 
-import java.util.Collection;
-
 import javax.annotation.Resource;
-import javax.annotation.Resources;
 
 import riley.patrick.Root.model.Drivers;
 import riley.patrick.Root.repository.DriversRepository;
@@ -18,7 +15,10 @@ public class DriversTracking {
 		String denoter = words[0];
 		String name = words[1];
 		if (denoter.equalsIgnoreCase("driver")) {
+
 			Drivers driver = new Drivers(name);
+
+			driver = driverRepo.save(driver);
 
 		} else if (denoter.equalsIgnoreCase("trip")) {
 			// parseOutLines(toParseWord, name);
@@ -27,7 +27,7 @@ public class DriversTracking {
 
 	public void parseOutLines(String toParseLines, String name) {
 		String[] words = toParseLines.split(" ");
-		Drivers driver = (Drivers) driverRepo.findByDriverName(name);
+		Drivers driver = driverRepo.findByDriverName(name);
 		double startTime = Double.parseDouble(words[2]);
 		double stopTime = Double.parseDouble(words[3]);
 		double miles = Double.parseDouble(words[4]);
@@ -38,7 +38,7 @@ public class DriversTracking {
 	private void checkTripViability(double start, double stop, double miles, Drivers driver) {
 		double time = stop - start;
 		double mphCalculated = miles / time;
-		if (mphCalculated < 5.0 || mphCalculated > 100.0) {
+		if (mphCalculated <= 5.0 || mphCalculated >= 100.0) {
 			driver.addMiles(miles);
 			driver.addMph(mphCalculated);
 		}

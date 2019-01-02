@@ -10,9 +10,9 @@ import javax.persistence.Id;
 public class Drivers {
 	@Id
 	@GeneratedValue
-	private Long driverId;
+	private Long id;
 	private String driverName;
-
+//LocalTime
 	private ArrayList<Double> miles = new ArrayList<Double>();
 	private ArrayList<Double> mph = new ArrayList<Double>();
 	private int averageMph;
@@ -48,15 +48,30 @@ public class Drivers {
 		this.mph.add(mph);
 	}
 
-	public double calculateTotalMiles() {
-		double sum = 0;
-		for (int i = 1; i < miles.size(); i++)
-			sum += miles.get(i);
-		return sum;
+	public int getAverageMph() {
+		return averageMph;
+	}
+
+	public int getTotalMiles() {
+		return totalMiles;
 	}
 
 	public void calculateAverageMph() {
+		calculateTotalMiles();
+		Double sum = 0.0;
+		for (double entry : mph) {
+			sum += entry;
+		}
+		int endMph = sum.intValue();
+		averageMph = totalMiles / endMph;
+	}
 
+	public void calculateTotalMiles() {
+		Double sum = 0.0;
+		for (double entry : miles) {
+			sum += entry;
+		}
+		totalMiles = sum.intValue();
 	}
 
 }
