@@ -1,24 +1,29 @@
 package riley.patrick.Root;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Scanner;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class RootApplication {
 
 	public static void main(String[] args) {
 		// SpringApplication.run(RootApplication.class, args);
-		String fileName = "DriversReport.txt";
+
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please Enter the Name of the Files: \nThe default file name is DriversReport.txt");
+		String fileName = input.nextLine();
+		File file = new File(fileName);
+
+		while (!file.exists()) {
+			System.out.println("That File Doesn't Exist Within The Directory.\nPlease Enter the Name of the Files: ");
+			fileName = input.nextLine();
+			file = new File(fileName);
+		}
 
 		DriversTracking driverTrack = new DriversTracking();
 		driverTrack.readTxtFile(fileName);
-
 	}
 
 }

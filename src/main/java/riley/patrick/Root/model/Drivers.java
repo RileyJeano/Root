@@ -80,7 +80,7 @@ public class Drivers {
 	public String toString() {
 
 		if (getAverageMph() != 0) {
-			return getDriverName() + ": " + getTotalMiles() + " miles " + getAverageMph() + " mph";
+			return getDriverName() + ": " + getTotalMiles() + " miles " + " @ " + getAverageMph() + " mph";
 		} else {
 			return getDriverName() + ": " + getTotalMiles() + " miles";
 		}
