@@ -2,15 +2,8 @@ package riley.patrick.Root.model;
 
 import java.util.ArrayList;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
 public class Driver {
-	@Id
-	@GeneratedValue
-	private Long id;
+
 	private String driverName;
 	private ArrayList<Double> miles = new ArrayList<Double>();
 	private ArrayList<Double> times = new ArrayList<Double>();
@@ -80,7 +73,7 @@ public class Driver {
 	public String toString() {
 
 		if (getAverageMph() != 0) {
-			return getDriverName() + ": " + getTotalMiles() + " miles " + " @ " + getAverageMph() + " mph";
+			return getDriverName() + ": " + getTotalMiles() + " miles " + "@ " + getAverageMph() + " mph";
 		} else {
 			return getDriverName() + ": " + getTotalMiles() + " miles";
 		}

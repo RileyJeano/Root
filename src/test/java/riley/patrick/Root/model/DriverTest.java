@@ -67,7 +67,7 @@ public class DriverTest {
 		underTest.addTime(5.0);
 		underTest.calculateAverageMph();
 		String test = underTest.toString();
-		Assert.assertEquals("Eric: 10 miles 120 mph", test);
+		Assert.assertEquals("Eric: 10 miles @ 120 mph", test);
 	}
 
 	// sort
