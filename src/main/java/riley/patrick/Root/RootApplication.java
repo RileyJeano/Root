@@ -12,7 +12,8 @@ public class RootApplication {
 		// SpringApplication.run(RootApplication.class, args);
 
 		Scanner input = new Scanner(System.in);
-		System.out.println("Please Enter the Name of the Files: \nThe default file name is DriversReport.txt");
+		System.out.println(
+				"Please Enter the Name of the Files: \nThe file created for this assignment is named DriversReport.txt");
 		String fileName = input.nextLine();
 		File file = new File(fileName);
 

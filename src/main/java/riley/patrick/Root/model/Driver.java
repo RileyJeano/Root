@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Drivers {
+public class Driver {
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -17,11 +17,11 @@ public class Drivers {
 	private double averageMph;
 	private double totalMiles;
 
-	public Drivers() {
+	public Driver() {
 
 	}
 
-	public Drivers(String driverName) {
+	public Driver(String driverName) {
 		this.driverName = driverName;
 		miles.add(0.0);
 

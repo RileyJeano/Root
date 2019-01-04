@@ -5,25 +5,25 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class DriversTest {
+public class DriverTest {
 
 	@Test
 	public void shouldHaveDriverName() {
-		Drivers underTest = new Drivers("Eric");
+		Driver underTest = new Driver("Eric");
 		String name = underTest.getDriverName();
 		Assert.assertEquals("Eric", name);
 	}
 
 	@Test
 	public void shouldHaveZeroMilesAsNewDriver() {
-		Drivers underTest = new Drivers("Eric");
+		Driver underTest = new Driver("Eric");
 		ArrayList<Double> miles = underTest.getMiles();
 		Assert.assertEquals(true, miles.contains(0.0));
 	}
 
 	@Test
 	public void shouldAddMiles() {
-		Drivers underTest = new Drivers("Eric");
+		Driver underTest = new Driver("Eric");
 		underTest.addMiles(5.5);
 		ArrayList<Double> miles = underTest.getMiles();
 		Assert.assertEquals(true, miles.contains(5.5));
@@ -31,7 +31,7 @@ public class DriversTest {
 
 	@Test
 	public void shouldAddMph() {
-		Drivers underTest = new Drivers("Eric");
+		Driver underTest = new Driver("Eric");
 		underTest.addTime(5.0);
 		ArrayList<Double> mph = underTest.getTimes();
 		Assert.assertEquals(true, mph.contains(5.0));
@@ -39,7 +39,7 @@ public class DriversTest {
 
 	@Test
 	public void shouldCalculateTotalMiles() {
-		Drivers underTest = new Drivers("Eric");
+		Driver underTest = new Driver("Eric");
 		underTest.addMiles(5.0);
 		underTest.addMiles(5.0);
 		underTest.calculateTotalMiles();
@@ -49,7 +49,7 @@ public class DriversTest {
 
 	@Test
 	public void shouldCalculateAverageMpm() {
-		Drivers underTest = new Drivers("Eric");
+		Driver underTest = new Driver("Eric");
 		underTest.addMiles(5.0);
 		underTest.addMiles(5.0);
 		underTest.addTime(5.0);
@@ -61,7 +61,7 @@ public class DriversTest {
 	// send right string
 	@Test
 	public void shouldHaveRightString() {
-		Drivers underTest = new Drivers("Eric");
+		Driver underTest = new Driver("Eric");
 		underTest.addMiles(5.0);
 		underTest.addMiles(5.0);
 		underTest.addTime(5.0);

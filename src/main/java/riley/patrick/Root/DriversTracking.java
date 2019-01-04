@@ -11,10 +11,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
-import riley.patrick.Root.model.Drivers;
+import riley.patrick.Root.model.Driver;
 
 public class DriversTracking {
-	private ArrayList<Drivers> driversList = new ArrayList<Drivers>();
+	private ArrayList<Driver> driversList = new ArrayList<Driver>();
 
 	public void readTxtFile(String name) {
 		try {
@@ -30,7 +30,6 @@ public class DriversTracking {
 				System.out.println(line);
 			}
 			fileReader.close();
-			String inputFile = stringBuffer.toString();
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -46,7 +45,7 @@ public class DriversTracking {
 		String denoter = words[0];
 		String name = words[1];
 		if (denoter.equalsIgnoreCase("driver")) {
-			Drivers driver = new Drivers(name);
+			Driver driver = new Driver(name);
 			driversList.add(driver);
 		} else if (denoter.equalsIgnoreCase("trip")) {
 			parseOutLines(words, name);
@@ -58,12 +57,12 @@ public class DriversTracking {
 		LocalTime startTime = LocalTime.parse(passedLines[2]);
 		LocalTime stopTime = LocalTime.parse(passedLines[3]);
 		double miles = Double.parseDouble(passedLines[4]);
-		Drivers driver = getSpecificDriver(name);
+		Driver driver = getSpecificDriver(name);
 		checkTripViability(startTime, stopTime, miles, driver);
 
 	}
 
-	private void checkTripViability(LocalTime start, LocalTime stop, double miles, Drivers driver) {
+	private void checkTripViability(LocalTime start, LocalTime stop, double miles, Driver driver) {
 		double duration = start.until(stop, ChronoUnit.MINUTES);
 		double mphCalculated = miles / (duration / 60);
 		if (mphCalculated >= 5.0 && mphCalculated <= 100.0) {
@@ -74,7 +73,7 @@ public class DriversTracking {
 
 	public void printOutDrivers() {
 		sortDrivers();
-		for (Drivers driver : driversList) {
+		for (Driver driver : driversList) {
 			{
 				// sort in order of highest miles
 				driver.calculateAverageMph();
@@ -83,13 +82,13 @@ public class DriversTracking {
 		}
 	}
 
-	public ArrayList<Drivers> getDriversList() {
+	public ArrayList<Driver> getDriversList() {
 		return driversList;
 	}
 
-	public Drivers getSpecificDriver(String name) {
+	public Driver getSpecificDriver(String name) {
 
-		for (Drivers driver : driversList) {
+		for (Driver driver : driversList) {
 			if (driver.getDriverName().equals(name)) {
 
 				return driver;
@@ -100,8 +99,8 @@ public class DriversTracking {
 
 	public void sortDrivers() {
 
-		Collections.sort(driversList, new Comparator<Drivers>() {
-			public int compare(Drivers first, Drivers second) {
+		Collections.sort(driversList, new Comparator<Driver>() {
+			public int compare(Driver first, Driver second) {
 				first.calculateTotalMiles();
 				second.calculateTotalMiles();
 				return second.getTotalMiles() - first.getTotalMiles();
