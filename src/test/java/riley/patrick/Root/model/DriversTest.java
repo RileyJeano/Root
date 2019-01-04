@@ -32,8 +32,8 @@ public class DriversTest {
 	@Test
 	public void shouldAddMph() {
 		Drivers underTest = new Drivers("Eric");
-		underTest.addMph(5.0);
-		ArrayList<Double> mph = underTest.getMph();
+		underTest.addTime(5.0);
+		ArrayList<Double> mph = underTest.getTimes();
 		Assert.assertEquals(true, mph.contains(5.0));
 	}
 
@@ -42,10 +42,20 @@ public class DriversTest {
 		Drivers underTest = new Drivers("Eric");
 		underTest.addMiles(5.0);
 		underTest.addMiles(5.0);
-		underTest.addMph(5.0);
+		underTest.calculateTotalMiles();
+		int test = underTest.getTotalMiles();
+		Assert.assertEquals(10, test);
+	}
+
+	@Test
+	public void shouldCalculateAverageMpm() {
+		Drivers underTest = new Drivers("Eric");
+		underTest.addMiles(5.0);
+		underTest.addMiles(5.0);
+		underTest.addTime(5.0);
 		underTest.calculateAverageMph();
 		int test = underTest.getAverageMph();
-		Assert.assertEquals(2, test);
+		Assert.assertEquals(120, test);
 	}
 
 }

@@ -13,9 +13,9 @@ public class Drivers {
 	private Long id;
 	private String driverName;
 	private ArrayList<Double> miles = new ArrayList<Double>();
-	private ArrayList<Double> mph = new ArrayList<Double>();
-	private int averageMph;
-	private int totalMiles;
+	private ArrayList<Double> times = new ArrayList<Double>();
+	private double averageMph;
+	private double totalMiles;
 
 	public Drivers() {
 
@@ -39,30 +39,33 @@ public class Drivers {
 		this.miles.add(miles);
 	}
 
-	public ArrayList<Double> getMph() {
-		return mph;
+	public ArrayList<Double> getTimes() {
+		return times;
 	}
 
-	public void addMph(double mph) {
-		this.mph.add(mph);
+	public void addTime(double times) {
+		this.times.add(times);
 	}
 
 	public int getAverageMph() {
-		return averageMph;
+		int roundedAverageMph = (int) Math.round(averageMph);
+		return roundedAverageMph;
 	}
 
 	public int getTotalMiles() {
-		return totalMiles;
+		int roundedMiles = (int) Math.round(totalMiles);
+		return roundedMiles;
 	}
 
 	public void calculateAverageMph() {
 		calculateTotalMiles();
 		Double sum = 0.0;
-		for (double entry : mph) {
-			sum += entry;
+		for (double entry : times) {
+			sum = sum + entry;
 		}
-		int endMph = sum.intValue();
-		averageMph = totalMiles / endMph;
+		double totalTime = (sum / 60.00);
+
+		averageMph = totalMiles / totalTime;
 	}
 
 	public void calculateTotalMiles() {
@@ -71,6 +74,27 @@ public class Drivers {
 			sum += entry;
 		}
 		totalMiles = sum.intValue();
+	}
+
+//	@Override
+//	public int compareTo(Student comparestu) {
+//		int compareage = ((Student) comparestu).getStudentage();
+//		/* For Ascending order */
+//		return this.studentage - compareage;
+//
+//		/* For Descending order do like this */
+//		// return compareage-this.studentage;
+//	}
+
+	@Override
+	public String toString() {
+
+		if (getAverageMph() != 0) {
+			return getDriverName() + ": " + getTotalMiles() + " miles " + getAverageMph() + " mph";
+		} else {
+			return getDriverName() + ": " + getTotalMiles() + " miles";
+		}
+
 	}
 
 }

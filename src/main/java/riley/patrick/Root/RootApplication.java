@@ -19,7 +19,6 @@ public class RootApplication {
 		DriversTracking driverTrack = new DriversTracking();
 		driverTrack.readTxtFile(fileName);
 
-		System.out.println("Server is Running! Better catch it!");
 	}
 
 }

@@ -41,4 +41,14 @@ public class DriversTrackingTest {
 
 	}
 
+	@Test
+	public void shouldGetSpecificDriver() {
+		DriversTracking underTest = new DriversTracking();
+		underTest.parseFirstWord("Driver Mike");
+		Drivers driver = underTest.getSpecificDriver("Mike");
+
+		Assert.assertEquals(true, driver.getDriverName().equals("Mike"));
+
+	}
+
 }
