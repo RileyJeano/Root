@@ -8,6 +8,7 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 import riley.patrick.Root.model.Drivers;
 
@@ -70,14 +71,13 @@ public class DriversTracking {
 		}
 	}
 
-	private void printOutDrivers() {
-		// Collections.sort(driversList);
+	public void printOutDrivers() {
+		sortDrivers();
 		for (Drivers driver : driversList) {
 			{
 				// sort in order of highest miles
 				driver.calculateAverageMph();
-				driver.toString();
-
+				System.out.println(driver.toString());
 			}
 		}
 	}
@@ -95,6 +95,17 @@ public class DriversTracking {
 			}
 		}
 		return null;
+	}
+
+	public void sortDrivers() {
+
+		Collections.sort(driversList, new Comparator<Drivers>() {
+			public int compare(Drivers first, Drivers second) {
+				first.calculateTotalMiles();
+				second.calculateTotalMiles();
+				return second.getTotalMiles() - first.getTotalMiles();
+			}
+		});
 	}
 
 }

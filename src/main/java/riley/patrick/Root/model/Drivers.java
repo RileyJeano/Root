@@ -76,16 +76,6 @@ public class Drivers {
 		totalMiles = sum.intValue();
 	}
 
-//	@Override
-//	public int compareTo(Student comparestu) {
-//		int compareage = ((Student) comparestu).getStudentage();
-//		/* For Ascending order */
-//		return this.studentage - compareage;
-//
-//		/* For Descending order do like this */
-//		// return compareage-this.studentage;
-//	}
-
 	@Override
 	public String toString() {
 

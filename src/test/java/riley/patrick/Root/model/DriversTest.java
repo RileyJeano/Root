@@ -58,4 +58,18 @@ public class DriversTest {
 		Assert.assertEquals(120, test);
 	}
 
+	// send right string
+	@Test
+	public void shouldHaveRightString() {
+		Drivers underTest = new Drivers("Eric");
+		underTest.addMiles(5.0);
+		underTest.addMiles(5.0);
+		underTest.addTime(5.0);
+		underTest.calculateAverageMph();
+		String test = underTest.toString();
+		Assert.assertEquals("Eric: 10 miles 120 mph", test);
+	}
+
+	// sort
+
 }

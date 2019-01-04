@@ -51,4 +51,21 @@ public class DriversTrackingTest {
 
 	}
 
+	@Test
+	public void shouldSortDrivers() {
+		DriversTracking underTest = new DriversTracking();
+		Drivers driver1 = new Drivers("Mike");
+		driver1.addMiles(5.0);
+		underTest.getDriversList().add(driver1);
+
+		Drivers driver2 = new Drivers("Pete");
+		driver2.addMiles(10.0);
+		underTest.getDriversList().add(driver2);
+
+		underTest.sortDrivers();
+		Assert.assertEquals("Pete", underTest.getDriversList().get(0).getDriverName());
+		Assert.assertEquals("Mike", underTest.getDriversList().get(1).getDriverName());
+
+	}
+
 }
